@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 // Instantiates a client
 const translationClient = new TranslationServiceClient();
 
-const projectId = 'thanhla-node-translate';
+const projectId = 'bestbuy77';
 const location = 'global';
 
 async function translateText(string, lang = 'en') {
