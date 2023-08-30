@@ -1,0 +1,30 @@
+extends ../layouts/layout
+
+block meta
+	title #{__('title_page.store')}
+
+block content
+	main.store-page
+		.wrapper
+			include ../components/subHeader
+			.product-list
+				each product in products
+					include ../components/productTile
+				ul.pagination
+					li.page-item
+						- var disableClass = currentPage == 1 ? ' disabled' : ''
+						- var link = prevPage ? '/store?page=' + prevPage : 'javascript:(0);'
+						a(href=link, class='btn-prev-page' + disableClass)
+
+					- var n = 1;
+					while n < totalPage
+						- var className = n == currentPage ? 'active' : ''
+
+						li.page-item
+							a(href="/store?page=" + n, class=className)= n++ 
+
+					li.page-item 
+						- var disableClass = currentPage == totalPage ? ' disabled' : ''
+						- var link = nextPage ? '/store?page=' + nextPage : 'javascript:(0);'
+
+						a(href=link, class='btn-next-page' + disableClass)

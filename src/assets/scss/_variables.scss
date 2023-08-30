@@ -1,0 +1,21 @@
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+$font-family-base: "Roboto", sans-serif;
+$fall-back-font: $font-family-base;
+$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+
+$font-base-convert: 16; // use this for convert px to rem when use mixin setFontSize
+$line-height-base: 1.5;
+
+// Color
+//
+$black: #000;
+$white: #fff;
+$dark: #110e22;
+$gray: #8d95b0;
+$gray-light: #f6f8ff;
+$gray-dark: #455a64;
+$green: #03cb83;
+$orange: #ff6565;
+$blue: #1890ff;

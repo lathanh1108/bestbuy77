@@ -1,0 +1,78 @@
+extends ../layouts/layout
+
+block meta
+	title #{__('title_page.homepage')}
+
+block content
+	.homepage
+		section.banner
+			.module-banner
+				.wrapper.banner-container
+					.left-content
+						img(src="./images/wave-icon.png" alt="alt" class="wave")
+						h2 #{__('homepage_banner.title')}
+						h1 #{__('homepage_banner.big_title')}
+						p #{__('homepage_banner.content')}
+					img(src="./images/homepage-banner-layout.png" alt="alt" class="banner-bg")
+		section.customers
+			.wrapper
+				.customer-list
+					- var customerList = ["./images/ico-jcb.png", "./images/ico-visa.png", "./images/ico-master.png", "./images/ico-paypal.png", "./images/ico-american.png", "./images/ico-card.png"]
+
+					each customer in customerList
+						.customer 
+							img(src=customer, alt="alt" class="mx-auto")
+		section.about
+			.wrapper
+				.about-container
+					.col-left
+						img(src="./images/img-about.png" alt="alt")
+					.col-right
+						p #{__('homepage_about.title')}
+						h2 #{__('homepage_about.big_title')}
+						ul.about-list
+							- var aboutList = [{title: __('homepage_about.list.convenient.title'), description: __('homepage_about.list.convenient.description')}, {title: __('homepage_about.list.protect.title'), description: __('homepage_about.list.protect.description')}]
+
+							each about in aboutList
+								li
+									.icon 
+										svg(width="52" height="52" viewBox="0 0 52 52" fill="none")
+											<path d="M16.249 6.5C14.4583 6.5 12.999 7.95925 12.999 9.75V42.25C12.999 44.0407 14.4583 45.5 16.249 45.5H35.749C37.5398 45.5 38.999 44.0407 38.999 42.25V32.5H43.0615H45.499V30.0625V18.6875V16.25H43.0615H38.999V9.75C38.999 7.95925 37.5398 6.5 35.749 6.5H16.249ZM16.249 9.75H35.749V16.25H24.374V19.5H40.7732C41.0183 20.1893 41.5597 20.7307 42.249 20.9758V27.7742C41.5597 28.0193 41.0183 28.5607 40.7732 29.25H24.374V32.5H35.749V42.25H16.249V9.75ZM32.499 21.125C30.7034 21.125 29.249 22.5794 29.249 24.375C29.249 26.1706 30.7034 27.625 32.499 27.625C34.2946 27.625 35.749 26.1706 35.749 24.375C35.749 22.5794 34.2946 21.125 32.499 21.125ZM25.999 22.75C25.102 22.75 24.374 23.478 24.374 24.375C24.374 25.272 25.102 26 25.999 26C26.896 26 27.624 25.272 27.624 24.375C27.624 23.478 26.896 22.75 25.999 22.75ZM38.999 22.75C38.102 22.75 37.374 23.478 37.374 24.375C37.374 25.272 38.102 26 38.999 26C39.896 26 40.624 25.272 40.624 24.375C40.624 23.478 39.896 22.75 38.999 22.75ZM22.749 37.375V40.625H29.249V37.375H22.749Z" fill="#03CB83"></path>
+									.detail 
+										h4 #{about.title}
+										p #{about.description}
+		section.why
+			.wrapper
+				p.title #{__('homepage_why.title')}
+				h2.big-title #{__('homepage_why.big_title')}
+				.why-container
+					- var whyList = [{ icon: __('homepage_why.integration.icon'), title: __('homepage_why.integration.title'), description: __('homepage_why.integration.description') }, { icon: __('homepage_why.diversity.icon'), title: __('homepage_why.diversity.title'), description: __('homepage_why.diversity.description') }, { icon: __('homepage_why.payment.icon'), title: __('homepage_why.payment.title'), description: __('homepage_why.payment.description') }]
+
+					each why in whyList
+						.why-col
+							.why-item
+								.why-wrapper
+									.icon !{why.icon}
+									h3 !{why.title}
+									p !{why.description}
+		section.subscribe
+			.subscribe-container
+				.wrapper
+					.subscribe-row
+						.subscribe-content
+							h2.title !{__('homepage_subscribe.title')}
+							p.description !{__('homepage_subscribe.description')}
+							form(action="" method="submit").subscribe-form
+								.custom-input
+									label !{__('form.name.label')}
+									input(type="text" name="name" placeholder=__('form.name.placeholder'))
+								.custom-input
+									label !{__('form.email.label')}
+									input(type="text" name="email" placeholder=__('form.email.placeholder'))
+								button(type="submit").btn #{__('form.button.register')}
+						.subscribe-image
+							img(src="./images/img-subscribe.png" alt="subscribe")
+							svg(width="221" height="218" viewBox="0 0 221 218" fill="none" class="arrow")
+								<path d="M33.8962 105.436C48.2663 134.91 60.5707 133.912 70.8093 102.443C87.2452 162.388 99.5496 161.391 107.722 99.4501C124.094 158.443 136.398 157.446 144.636 96.4572C161.096 156.76 173.4 155.762 181.549 93.4643L184.009 67.3791" stroke="#00DE8E" stroke-width="3"></path><path d="M29.7227 95.6182C29.0293 95.0587 28.0078 95.6332 28.1098 96.5253L30.167 114.522C30.2773 115.487 31.5462 115.74 32.0214 114.892L35.3638 108.927C35.5489 108.597 35.9015 108.398 36.2761 108.414L43.041 108.695C44.0028 108.735 44.4619 107.51 43.7119 106.905L29.7227 95.6182Z" fill="#00DE8E"></path>
+
+

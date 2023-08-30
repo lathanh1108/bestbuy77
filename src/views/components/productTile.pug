@@ -1,0 +1,12 @@
+.product-tile(data-prodId=product.id)
+    .content
+        .image
+            img(src=product.thumbnail, alt="product.title")
+        .name
+            a(href="/store/detail/" + product.id) #{product.title}
+        .description
+            p= product.description
+        .price
+            p= __('global.price_unit') + product.price
+        .action
+            button(type="button" class="btn btn-block btn-add-to-cart") #{__('product_tile.add_to_cart')}

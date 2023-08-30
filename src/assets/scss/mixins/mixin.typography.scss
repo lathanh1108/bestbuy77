@@ -1,0 +1,52 @@
+@mixin setFontSize(
+	$fontsize,
+	$lineheight: $fontsize * $line-height-base,
+	$tracking: 0
+) {
+	font-size: ($fontsize) + px;
+	font-size: calc($fontsize / $font-base-convert) + rem;
+
+	@if $lineheight != 0 {
+		line-height: ($lineheight) + px;
+		line-height: calc($lineheight / $font-base-convert) + rem;
+	} @else {
+		line-height: normal;
+	}
+
+	@if $tracking != 0 {
+		letter-spacing: convert-tracking($tracking);
+	}
+}
+
+@mixin roboto-light {
+	font-family: $font-family-base;
+	font-weight: 100;
+}
+
+@mixin roboto-regular {
+	font-family: $font-family-base;
+	font-weight: 400;
+}
+
+@mixin roboto-medium {
+	font-family: $font-family-base;
+	font-weight: 500;
+}
+
+@mixin roboto-bold {
+	font-family: $font-family-base;
+	font-weight: 700;
+}
+
+@mixin roboto-black {
+	font-family: $font-family-base;
+	font-weight: 900;
+}
+
+@mixin max-line($line) {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: $line; /* number of lines to show */
+	line-clamp: $line;
+	-webkit-box-orient: vertical;
+}

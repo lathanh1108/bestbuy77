@@ -1,0 +1,59 @@
+.custom-input {
+	box-shadow: rgba($black, 0.04) 0px 4px 16px;
+	border-radius: 10px;
+	background-color: $white;
+	padding: 18px 20px;
+	margin-bottom: 20px;
+
+	label {
+		@include setFontSize(14);
+
+		color: $gray-dark;
+		display: block;
+		margin: 0px 0px 10px;
+	}
+
+	input {
+		@include setFontSize(14);
+
+		color: $gray;
+		border: none;
+		outline: none;
+		width: 100%;
+	}
+}
+
+button.btn,
+a.btn {
+	@include roboto-bold;
+
+	color: $white;
+	background-color: $green;
+	border-radius: 10px;
+    box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	min-height: 44px;
+	padding: 5px 30px;
+	transition: all 0.25s ease 0s;
+
+	&:hover {
+		box-shadow: rgba($black, 0.3) 2px 2px 8px 0px;
+	}
+
+    &.btn-sm {
+        min-height: 35px;
+    }
+
+    &.btn-rounded {
+        border-radius: 999px;
+    }
+}
+
+button.btn-block,
+a.btn-block {
+	justify-content: center;
+	width: 100%;
+}
+
+.custom-select {}
