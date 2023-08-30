@@ -4,7 +4,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const i18n = require('i18n');
-const axios = require("axios");
 
 var indexRouter = require('./src/routes/index');
 var usersRouter = require('./src/routes/users');
@@ -18,7 +17,7 @@ app.use(i18n.init);
 
 i18n.configure({
   locales: ['en', 'th'],
-  defaultLocale: 'en',
+  defaultLocale: 'th',
   directory: __dirname + '/src/locales',
   cookie: 'lang'
 });
