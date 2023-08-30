@@ -40,5 +40,20 @@
 	"form.button.register": "สมัครตอนนี้",
 	"title_page.store": "Bestbuy77 - แพลตฟอร์มอีคอมเมิร์ซที่รวดเร็ว สะดวก และปลอดภัย",
 	"product_tile.add_to_cart": "เพิ่มลงในรถเข็น",
-	"global.price_unit": "฿"
+	"global.price_unit": "฿",
+	"categoriesDropdown.placeholder": "ประเภทสินค้า",
+	"search.placeholder": "ค้นหา...",
+	"search.button": "ค้นหา",
+	"cart.label": "รถเข็น",
+	"title_page.cart": "Bestbuy77 - แพลตฟอร์มอีคอมเมิร์ซที่รวดเร็ว สะดวก และปลอดภัย",
+	"cart_page.price": "ราคา",
+	"cart_page.quantity": "ปริมาณ",
+	"cart_page.total": "เงินทั้งหมด",
+	"cart_page.customer_title": "จัดส่งไปที่",
+	"cart_page.customer.name": "ลูกค้า:",
+	"cart_page.customer.phone": "หมายเลขโทรศัพท์:",
+	"cart_page.customer.email": "อีเมล:",
+	"cart_page.customer.address": "ที่อยู่:",
+	"cart_page.summary.label": "จำนวนเงินทั้งหมด:",
+	"cart_page.summary.purchase": "ซื้อ"
 }

@@ -40,5 +40,20 @@
 	"form.button.register": "Register now",
 	"title_page.store": "Bestbuy77 - Fast, Convenient and Secure E-Commerce Platform",
 	"product_tile.add_to_cart": "Add to cart",
-	"global.price_unit": "$"
+	"global.price_unit": "$",
+	"categoriesDropdown.placeholder": "Product Category",
+	"search.placeholder": "Search...",
+	"search.button": "Search",
+	"cart.label": "Cart",
+	"title_page.cart": "Bestbuy77 - Fast, Convenient and Secure E-Commerce Platform",
+	"cart_page.price": "Price",
+	"cart_page.quantity": "Quantity",
+	"cart_page.total": "Total money",
+	"cart_page.customer_title": "Delivered to",
+	"cart_page.customer.name": "Customer:",
+	"cart_page.customer.phone": "Phone:",
+	"cart_page.customer.email": "Email:",
+	"cart_page.customer.address": "Address:",
+	"cart_page.summary.label": "Total amount:",
+	"cart_page.summary.purchase": "Purchase"
 }

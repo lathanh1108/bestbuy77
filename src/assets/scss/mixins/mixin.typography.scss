@@ -18,6 +18,11 @@
 	}
 }
 
+@mixin setOnlyFontSize($fontsize) {
+	font-size: ($fontsize) + px;
+	font-size: calc($fontsize / $font-base-convert) + rem;
+}
+
 @mixin roboto-light {
 	font-family: $font-family-base;
 	font-weight: 100;

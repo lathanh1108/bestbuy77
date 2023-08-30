@@ -6,7 +6,7 @@ const logger = require('morgan');
 const i18n = require('i18n');
 
 var indexRouter = require('./src/routes/index');
-var usersRouter = require('./src/routes/users');
+var storeRouter = require('./src/routes/store');
 
 var app = express();
 
@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(i18n.init);
 
 i18n.configure({
-  locales: ['en', 'th'],
+  locales: ['th', 'en'],
   defaultLocale: 'th',
   directory: __dirname + '/src/locales',
   cookie: 'lang'
@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/store', storeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -8,17 +8,18 @@ const clean = require('gulp-clean');
 
 const filesPath = {
     scss: 'src/assets/scss/*.scss',
-    fonts: 'src/assets/fonts/**/*.*',
-    images: 'src/assets/images/**/*.*',
+    fonts: 'src/assets/fonts/**',
+    images: 'src/assets/images/**',
     js: 'src/assets/js/*.js',
-    jsLibrary: 'src/assets/js/libraries/*.js',
+    jsLibraries: 'src/assets/js/libraries/*',
+    cssLibraries: 'src/assets/scss/libraries/*',
 };
 
 const filesPathTarget = {
-    scss: 'public/stylesheets',
+    scss: 'public/css',
     fonts: 'public/fonts',
     images: 'public/images',
-    js: 'public/javascripts',
+    js: 'public/js',
 };
 
 const filesPathWatch = {
@@ -48,7 +49,7 @@ function scssTask(mode = null) {
 }
 
 function jsTask() {
-    return src([filesPath.jsLibrary, filesPath.js])
+    return src([filesPath.js])
         .pipe(concat('app.js'))
         .pipe(dest(filesPathTarget.js));
 }
@@ -63,6 +64,23 @@ function imageTask() {
         .pipe(dest(filesPathTarget.images));
 }
 
+function copyJsLibraries() {
+    return src(filesPath.jsLibraries)
+        .pipe(dest(filesPathTarget.js));
+}
+
+function copyCssLibraries() {
+    return src(filesPath.cssLibraries)
+        .pipe(dest(filesPathTarget.scss));
+}
+
+function copyAssets() {
+    copyJsLibraries();
+    copyCssLibraries();
+    fontTask();
+    imageTask();
+}
+
 function defaultClean() {
     return src('public').pipe(clean());
 }
@@ -70,8 +88,7 @@ function defaultClean() {
 function build(cb) {
     scssTask();
     jsTask();
-    fontTask();
-    imageTask();
+    copyAssets();
     cb();
 }
 
@@ -83,11 +100,10 @@ function serve() {
 function production(cb) {
     scssTask('production');
     jsTask();
-    fontTask();
-    imageTask();
+    copyAssets();
     cb();
 }
 
-exports.default = series(defaultClean ,build);
-exports.production = series(defaultClean ,production)
+exports.default = series(defaultClean, build);
+exports.production = series(defaultClean, production)
 exports.serve = series(defaultClean, build, serve);

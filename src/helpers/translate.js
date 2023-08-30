@@ -8,8 +8,6 @@ const projectId = 'bestbuy77';
 const location = 'global';
 
 async function translateText(string, lang = 'en') {
-    var cookies = cookieParser.JSONCookie('lang');
-
     // Construct request
     const request = {
         parent: `projects/${projectId}/locations/${location}`,
@@ -27,14 +25,24 @@ async function translateText(string, lang = 'en') {
     }
 }
 
+async function translateProduct(product, lang = 'en') {
+    if (lang && lang != 'en') {
+        let transTitle = await translateText(product.title, lang).then(res => { return res; })
+        let transDescription = await translateText(product.description, lang).then(res => { return res; })
+
+        product.title = transTitle;
+        product.description = transDescription;
+    }
+
+    return product;
+}
+
 async function translateProducts(products, lang = 'en') {
     if (lang && lang != 'en') {
         for (let i = 0; i < products.length; i++) {
-            let transTitle = await translateText(products[i].title, lang).then(res => { return res; })
-            let transDescription = await translateText(products[i].description, lang).then(res => { return res; })
+            let transProduct = await translateProduct(products[i], lang).then(res => {return res});
 
-            products[i].title = transTitle;
-            products[i].description = transDescription;
+            products[i] = transProduct;
         }
     }
 
@@ -42,4 +50,5 @@ async function translateProducts(products, lang = 'en') {
 }
 
 exports.getCategories = translateText;
+exports.translateProduct = translateProduct;
 exports.translateProducts = translateProducts;

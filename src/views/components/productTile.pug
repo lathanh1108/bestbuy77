@@ -1,4 +1,4 @@
-.product-tile(data-prodId=product.id)
+.product-tile(data-prodid=product.id)
     .content
         .image
             img(src=product.thumbnail, alt="product.title")
@@ -9,4 +9,4 @@
         .price
             p= __('global.price_unit') + product.price
         .action
-            button(type="button" class="btn btn-block btn-add-to-cart") #{__('product_tile.add_to_cart')}
+            button(type="button" data-prodid=product.id class="btn btn-block btn-add-to-cart") #{__('product_tile.add_to_cart')}

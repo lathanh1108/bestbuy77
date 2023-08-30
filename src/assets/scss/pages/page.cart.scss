@@ -1,0 +1,149 @@
+.cart-page {
+	.cart-container {
+		display: flex;
+		margin: 0 -15px;
+
+		.cart-wrapper,
+		.shipping-info {
+			padding: 0 15px;
+		}
+
+		.cart-wrapper {
+			$width: calc((100% / 3) * 2);
+
+			flex: 1 0 $width;
+			max-width: $width;
+		}
+
+		.shipping-info {
+			$width: calc(100% / 3);
+
+			flex: 1 0 $width;
+			max-width: $width;
+		}
+	}
+
+	.table-wrapper-head,
+	.table-wrapper-body,
+    .customer-info {
+		background-color: $white;
+		border-radius: 4px;
+	}
+
+	table {
+		td {
+			text-align: center;
+		}
+	}
+
+	.table-wrapper-head {
+		padding: 0 20px;
+		margin-bottom: 12px;
+
+		.table-head {
+			width: 100%;
+		}
+
+		thead {
+			height: 44px;
+		}
+
+		.material-symbols-outlined {
+			@include setOnlyFontSize(20);
+		}
+	}
+
+	.table-wrapper-body {
+		padding: 24px 20px;
+
+		.material-symbols-outlined {
+			@include setOnlyFontSize(20);
+		}
+
+		.table-body {
+			width: 100%;
+
+			tbody {
+				tr {
+					&:first-child {
+						td {
+							padding-top: 0;
+						}
+					}
+
+					&:last-child {
+						td {
+							padding-bottom: 0;
+						}
+					}
+
+					+ tr {
+						td {
+							border-top: 1px solid rgba($gray, 0.3);
+						}
+					}
+
+					td {
+						padding: 24px 0;
+					}
+				}
+			}
+		}
+
+		.product-info {
+			display: flex;
+			align-items: center;
+
+			.product-image {
+				$size: 44px;
+
+				border: 1px solid $gray-light;
+				box-sizing: border-box;
+				border-radius: 4px;
+				width: $size;
+				height: $size;
+				margin: 0 12px;
+				object-fit: cover;
+			}
+
+			.product-name {
+				@include roboto-medium;
+			}
+		}
+
+        .product-total {
+            color: $orange;
+        }
+	}
+
+    .customer-info {
+        padding: 24px;
+
+        .customer-title {
+            @include roboto-medium;
+            @include setFontSize(20);
+
+            margin-bottom: 20px;
+        }
+
+        .summary-container {
+            border-top: 1px solid rgba($gray, 0.3);
+            margin-top: 36px;
+            padding-top: 24px;
+        }
+
+        .summary-price {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+
+            * {
+                @include roboto-medium;
+            }
+
+            .total {
+                color: $orange;
+            }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+extends ../layouts/layout
+
+block meta
+    title #{__('title_page.cart')}
+
+block content
+    main.cart-page
+        .wrapper
+            .cart-container
+                .cart-wrapper
+                    .table-wrapper-head
+                        table.table-head
+                            thead
+                                td(width="40%")
+                                    div.name
+                                td(width="20%") #{__('cart_page.price')}
+                                td(width="15%") #{__('cart_page.quantity')} 
+                                td(width="20%") #{__('cart_page.total')}
+                                td(width="5%")
+                                    span.material-symbols-outlined delete_forever
+                    .table-wrapper-body
+                        table.table-body
+                            tbody
+                                each product in products
+                                    tr(class="product-information")
+                                        td(width="40%")
+                                            div.product-info
+                                                label.custom-checkbox
+                                                    input(type="checkbox" data-id=product.id name="check_product")
+                                                img(src=product.thumbnail alt=product.title class="product-image")
+                                                a(href="/store/detail" + product.id class="product-name") #{product.title}
+                                        td(width="20%" class="product-price" data-price=product.price)
+                                            span.unit #{__('global.price_unit')}
+                                            span.value #{product.price}
+                                        td(width="15%" class="product-quantity")
+                                            div(class="number-input")
+                                                button(class="minus btn-change-quantity")
+                                                    span.material-symbols-outlined remove
+                                                .quantity-input
+                                                    input(class="quantity" min="1" name="quantity" type="number" max="9799" value="1")
+                                                button(class="plus btn-change-quantity")
+                                                    span.material-symbols-outlined add
+                                        td(width="20%" class="product-total")
+                                            span.unit #{__('global.price_unit')}
+                                        td(width="5%" class="btn-remove-product")
+                                            button(class="btn-remove-product")
+                                                span.material-symbols-outlined delete_forever
+                .shipping-info
+                    .customer-info 
+                        p.customer-title #{__('cart_page.customer_title')}
+                        form
+                            .material-input
+                                label(for="customer_name")= __('cart_page.customer.name')
+                                input(type="text" name="customer_name")
+                            .material-input
+                                label(for="customer_phone")= __('cart_page.customer.phone')
+                                input(type="text" name="customer_phone")
+                            .material-input
+                                label(for="customer_email")= __('cart_page.customer.email')
+                                input(type="text" name="customer_email")
+                            .material-input
+                                label(for="customer_address")= __('cart_page.customer.address')
+                                input(type="text" name="customer_address")
+                            .summary-container(data-total=0)
+                                p.summary-price
+                                    span.label= __('cart_page.summary.label')
+                                    span.total
+                                        span.unit #{__('global.price_unit')}
+                                        span.value 0
+                                button(type="submit" class="btn btn-block btn-purchase")= __('cart_page.summary.purchase')
+
+

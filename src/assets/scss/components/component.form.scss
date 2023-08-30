@@ -6,6 +6,7 @@
 	margin-bottom: 20px;
 
 	label {
+		@include roboto-bold;
 		@include setFontSize(14);
 
 		color: $gray-dark;
@@ -23,6 +24,12 @@
 	}
 }
 
+button {
+	.material-symbols-outlined {
+		cursor: pointer;
+	}
+}
+
 button.btn,
 a.btn {
 	@include roboto-bold;
@@ -30,7 +37,7 @@ a.btn {
 	color: $white;
 	background-color: $green;
 	border-radius: 10px;
-    box-sizing: border-box;
+	box-sizing: border-box;
 	display: flex;
 	align-items: center;
 	min-height: 44px;
@@ -41,13 +48,13 @@ a.btn {
 		box-shadow: rgba($black, 0.3) 2px 2px 8px 0px;
 	}
 
-    &.btn-sm {
-        min-height: 35px;
-    }
+	&.btn-sm {
+		min-height: 35px;
+	}
 
-    &.btn-rounded {
-        border-radius: 999px;
-    }
+	&.btn-rounded {
+		border-radius: 999px;
+	}
 }
 
 button.btn-block,
@@ -56,4 +63,85 @@ a.btn-block {
 	width: 100%;
 }
 
-.custom-select {}
+.custom-select {
+	display: flex;
+
+	select.select {
+		flex: 1 0;
+	}
+}
+
+.number-input {
+	$bg-color: rgba($gray, 0.2);
+
+	border: 1px solid $bg-color;
+	border-radius: 4px;
+	display: flex;
+	justify-content: space-between;
+	height: 30px;
+	overflow: hidden;
+
+	.quantity-input {
+		flex: 1 0;
+
+		input {
+			text-align: center;
+			line-height: 28px;
+			width: 100%;
+			-moz-appearance: textfield;
+
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+
+			&:focus-visible {
+				outline: none;
+			}
+		}
+	}
+
+	button {
+		color: $gray;
+		background-color: $bg-color;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 1 0 30px;
+		max-width: 30px;
+		cursor: pointer;
+
+		&:hover {
+			color: $white;
+			background-color: $green;
+		}
+	}
+
+	.material-symbols-outlined {
+		@include setOnlyFontSize(20);
+
+		cursor: pointer;
+	}
+}
+
+.material-input {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	margin-bottom: 12px;
+
+	label {
+		min-width: 110px;
+		color: $gray;
+	}
+
+	input {
+		border-bottom: 1px solid rgba($gray, 0.3);
+		width: 100%;
+
+		&:focus-visible {
+			outline: none;
+		}
+	}
+}
