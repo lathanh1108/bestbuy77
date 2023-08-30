@@ -6,10 +6,6 @@
 	"menu.login": "เข้าสู่ระบบ",
 	"footer.col1.title": "แพลตฟอร์มอีคอมเมิร์ซ Bestbuy77",
 	"footer.col1.description": "แพลตฟอร์มอีคอมเมิร์ซที่ครอบคลุม ทางเลือกที่เหมาะสมที่สุดของพันธมิตรการขายและผู้ชำระเงิน",
-	"footer.contact.title": "ติดต่อ",
-	"footer.contact.location": "ชั้น 5 อาคารสำนักงาน 1 คอมเพล็กซ์ Sun Square, 21 Le Duc Tho, My Dinh 2 Ward, เขต Nam Tu Liem, ฮานอย, เวียดนาม",
-	"footer.contact.phone": "0797999929",
-	"footer.contact.email": "info@bestbuy77.com.vn",
 	"footer.document.title": "เอกสาร",
 	"footer.document.operational_regulations": "ข้อบังคับการปฏิบัติงาน",
 	"footer.document.privacy_policy": "นโยบายความเป็นส่วนตัว",
@@ -44,6 +40,5 @@
 	"form.button.register": "สมัครตอนนี้",
 	"title_page.store": "Bestbuy77 - แพลตฟอร์มอีคอมเมิร์ซที่รวดเร็ว สะดวก และปลอดภัย",
 	"product_tile.add_to_cart": "เพิ่มลงในรถเข็น",
-	"global.price_unit": "฿",
-	"footer.copyright": "บริษัทร่วมหุ้น BESTBUY77 | เอ็มเอสที: 0110016926 | วันที่ออก: 01/06/2022 <br>สถานที่ออก: ฮานอย Department of Planning and Investment | ตัวแทนทางกฎหมาย: Nguyen Hai Dang"
+	"global.price_unit": "฿"
 }

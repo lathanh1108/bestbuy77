@@ -1,5 +1,6 @@
 footer.footer {
 	background-color: rgba($color: $gray-light, $alpha: 0.8);
+    padding-bottom: 30px;
 
     .wrapper {
         border-top: 2px dashed $gray;
@@ -102,17 +103,9 @@ footer.footer {
                 display: flex;
 
                 > * {
-                    flex: 1 0;
+                    height: 35px;
                 }
             }
 		}
 	}
-
-    .copyright {
-        @include setFontSize(16, 28);
-
-        color: $gray;
-        padding: 16px 0;
-        text-align: center;
-    }
 }
