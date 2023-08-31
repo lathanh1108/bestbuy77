@@ -11,10 +11,6 @@ html {
 	overflow-x: hidden;
 }
 
-body {
-	height: 2000px;
-}
-
 .wrapper {
 	@include make-container();
 	@include make-container-max-widths();

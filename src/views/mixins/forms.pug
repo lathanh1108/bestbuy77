@@ -1,0 +1,5 @@
+mixin material-input
+    .material-input(class!=attributes.class)
+        label(for!=attributes.iid, class="inp-label")!= attributes.label
+        .inp-field
+            input(type!=attributes.type, name!=attributes.name, id!=attributes.iid, required!=attributes.required ? attributes.required : false)

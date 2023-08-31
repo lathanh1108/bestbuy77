@@ -1,31 +1,31 @@
 .sub-header {
 	display: flex;
-    align-items: center;
-    gap: 30px;
+	align-items: center;
+	gap: 30px;
 	margin-bottom: 50px;
 
-    @include media-breakpoint-down(md) {
-        gap: 20;
-    }
+	@include media-breakpoint-down(md) {
+		gap: 20;
+	}
 
-    @include media-breakpoint-down(sm) {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+	@include media-breakpoint-down(sm) {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 
 	.categories {
-        background-color: $white;
-        border: 1px solid rgba($gray, 0.8);
-        border-radius: 4px;
+		background-color: $white;
+		border: 1px solid rgba($gray, 0.8);
+		border-radius: 4px;
 		display: flex;
 		position: relative;
 		width: 260px;
-        height: 38px;
-        overflow: hidden;
+		height: 38px;
+		overflow: hidden;
 
-        @include media-breakpoint-down(sm) {
-            order: 2;
-        }
+		@include media-breakpoint-down(sm) {
+			order: 2;
+		}
 
 		.input-icon,
 		.dropdown-arrow {
@@ -34,10 +34,10 @@
 			align-items: center;
 			height: 100%;
 			padding: 8px;
-            position: absolute;
+			position: absolute;
 
 			.material-symbols-outlined {
-                @include setOnlyFontSize(20);
+				@include setOnlyFontSize(20);
 			}
 		}
 
@@ -54,134 +54,151 @@
 		}
 
 		.category-select {
-            width: 100%;
+			width: 100%;
 
-            > * {
-                @include setFontSize(16);
+			> * {
+				@include setFontSize(16);
 
-                width: 100%;
-                height: 100%;
-                padding: 0 36px;
-            }
+				width: 100%;
+				height: 100%;
+				padding: 0 36px;
+			}
 
-            .selected-value {
+			.selected-value {
 				position: absolute;
 				top: 0;
 				left: 0;
 				z-index: -2;
-            }
+			}
 
 			input {
-                &:focus-visible {
-                    outline: none;
-                }
+				&:focus-visible {
+					outline: none;
+				}
 			}
 		}
 	}
 
 	.search {
-        background-color: $white;
-        border: 1px solid rgba($gray, 0.8);
-        border-radius: 4px;
+		background-color: $white;
+		border: 1px solid rgba($gray, 0.8);
+		border-radius: 4px;
 		flex: 1 0;
-        display: flex;
-        height: 38px;
-        overflow: hidden;
+		display: flex;
+		height: 38px;
+		overflow: hidden;
 
-        @include media-breakpoint-down(sm) {
-            order: 3;
-            flex: 1 0 100%;
-        }
+		@include media-breakpoint-down(sm) {
+			order: 3;
+			flex: 1 0 100%;
+		}
 
-        .search-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
+		.search-icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
 
-            .material-symbols-outlined {
-                @include setOnlyFontSize(25);
+			.material-symbols-outlined {
+				@include setOnlyFontSize(25);
 
-                color: $green;
-            }
-        }
+				color: $green;
+			}
+		}
 
-        .search-input {
-            flex: 1 0;
+		.search-input {
+			flex: 1 0;
 
-            input.inp-search {
-                width: 100%;
-                height: 100%;
+			input.inp-search {
+				width: 100%;
+				height: 100%;
 
-                &:focus-visible {
-                    outline: none;
-                }
-            }
-        }
+				&:focus-visible {
+					outline: none;
+				}
+			}
+		}
 
-        .search-action {
-            display: flex;
-            align-items: center;
+		.search-action {
+			display: flex;
+			align-items: center;
 
-            button.btn-search {
-                @include roboto-regular;
-                @include setFontSize(14);
+			button.btn-search {
+				@include roboto-regular;
+				@include setFontSize(14);
 
-                border-radius: 4px;
-                min-height: 28px;
-                padding: 0 12px;
-                margin: 0 4px;
-            }
-        }
+				border-radius: 4px;
+				min-height: 28px;
+				padding: 0 12px;
+				margin: 0 4px;
+			}
+		}
 	}
 
-    .cart {
-        border-radius: 12px;
-        padding: 3px 6px;
-        position: relative;
-        transition: all 0.3s ease 0s;
+	.cart {
+		border-radius: 12px;
+		padding: 3px 6px;
+		position: relative;
+		transition: all 0.3s ease 0s;
 
-        @include media-breakpoint-down(sm) {
-            background-color: $white;
-            order: 1;
-            margin-left: auto;
-            padding: 6px;
-        }
+		@include media-breakpoint-down(sm) {
+			background-color: $white;
+			order: 1;
+			margin-left: auto;
+			padding: 6px;
+		}
 
-        &:hover {
-            background-color: $white;
-        }
+		&:hover {
+			background-color: $white;
+		}
 
-        .cart-link {
-            display: flex;
-            align-items: center;
-            flex-wrap: nowrap;
-        }
+		.cart-link {
+			display: flex;
+			align-items: center;
+			flex-wrap: nowrap;
+		}
 
-        .cart-icon {
-            background-color: $green;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            position: relative;
-            margin-right: 12px;
+		.cart-icon {
+			background-color: $green;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			position: relative;
+			margin-right: 12px;
 
-            .material-symbols-outlined {
-                @include setOnlyFontSize(23);
+			.material-symbols-outlined {
+				@include setOnlyFontSize(23);
 
-                color: $white;
-            }
-        }
-        
-        .cart-label {
-            @include roboto-medium;
-        }
-    }
+				color: $white;
+			}
+
+			.amount {
+				@include setFontSize(10);
+
+				background-color: $orange;
+				border-radius: 50%;
+				color: $white;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 18px;
+				height: 18px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				transform: translate(5px, -5px);
+			}
+		}
+
+		.cart-label {
+			@include roboto-medium;
+		}
+	}
 }
 
 .ui-categories-dropdown {
-    top: 4px;
+	top: 4px;
 }

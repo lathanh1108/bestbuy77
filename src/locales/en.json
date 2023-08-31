@@ -55,5 +55,15 @@
 	"cart_page.customer.email": "Email:",
 	"cart_page.customer.address": "Address:",
 	"cart_page.summary.label": "Total amount:",
-	"cart_page.summary.purchase": "Purchase"
+	"cart_page.summary.purchase": "Purchase",
+	"title_page.payment": "Bestbuy77 - Fast, Convenient and Secure E-Commerce Platform",
+	"payment.your_order": "Your order",
+	"payment.order_code": "Order code",
+	"payment.order_tracking.title": "Order tracking",
+	"payment.order_tracking.value": "Customers can track order status via email.",
+	"payment.order_total": "TOTAL ORDER PRICE",
+	"payment.payment_options.tile": "Select Payment Method",
+	"payment.appota": "appota",
+	"payment.9pay": "9pay",
+	"go_back": "Back"
 }

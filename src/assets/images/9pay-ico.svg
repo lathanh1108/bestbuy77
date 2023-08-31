@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 283.5 283.5" style="enable-background:new 0 0 283.5 283.5;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);fill:url(#SVGID_3_);}
+	.st1{clip-path:url(#SVGID_5_);fill:url(#SVGID_6_);}
+</style>
+<g>
+	<g>
+		<g>
+			<defs>
+				<path id="SVGID_1_" d="M125.3,109.7c0-9.1,7.3-16.4,16.4-16.4s16.4,7.3,16.4,16.4c0,9.1-7.3,16.4-16.4,16.4
+					S125.3,118.8,125.3,109.7 M48.8,109.7c0,51.3,41.6,93,93,93c51.3,0,93-41.6,93-93c0-51.3-41.6-93-93-93
+					C90.4,16.7,48.8,58.4,48.8,109.7"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+			</clipPath>
+			
+				<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-280.2187" y1="442.8618" x2="-276.6273" y2="442.8618" gradientTransform="matrix(-34.2742 -29.8074 -29.8074 34.2742 3765.8347 -23397.4199)">
+				<stop  offset="0" style="stop-color:#31548B"/>
+				<stop  offset="0.1859" style="stop-color:#31548B"/>
+				<stop  offset="0.4106" style="stop-color:#45798E"/>
+				<stop  offset="0.7897" style="stop-color:#6FC386"/>
+				<stop  offset="1" style="stop-color:#6FC386"/>
+			</linearGradient>
+			<polygon class="st0" points="154.6,294.7 -43.3,122.6 128.8,-75.3 326.8,96.8 			"/>
+		</g>
+		<g>
+			<defs>
+				<path id="SVGID_4_" d="M122.2,18.8C146.4,31.5,163,56.9,163,86.1c0,13.3-3.4,25.9-9.5,36.7l-36.1,76.6l-9.8,20.8l0,0
+					c-2.1,4.6-3.3,9.8-3.3,15.2c0,20.3,16.5,36.8,36.8,36.8c13.4,0,25.1-7.2,31.6-18l49.8-98.8l4.3-8.6l0.2-0.4
+					c4.9-11.3,7.6-23.8,7.6-36.9c0-51.4-41.6-93-92.9-93C135,16.7,128.5,17.4,122.2,18.8"/>
+			</defs>
+			<clipPath id="SVGID_5_">
+				<use xlink:href="#SVGID_4_"  style="overflow:visible;"/>
+			</clipPath>
+			
+				<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="-283.6015" y1="440.2281" x2="-280.0101" y2="440.2281" gradientTransform="matrix(0 -40.618 -40.618 0 18050.7285 -11297.7021)">
+				<stop  offset="0" style="stop-color:#4A95D1"/>
+				<stop  offset="1" style="stop-color:#6FC386"/>
+			</linearGradient>
+			<rect x="104.4" y="16.7" class="st1" width="130.3" height="255.6"/>
+		</g>
+	</g>
+</g>
+</svg>

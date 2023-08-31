@@ -48,25 +48,15 @@ block content
                 .shipping-info
                     .customer-info 
                         p.customer-title #{__('cart_page.customer_title')}
-                        form
-                            .material-input
-                                label(for="customer_name")= __('cart_page.customer.name')
-                                input(type="text" name="customer_name")
-                            .material-input
-                                label(for="customer_phone")= __('cart_page.customer.phone')
-                                input(type="text" name="customer_phone")
-                            .material-input
-                                label(for="customer_email")= __('cart_page.customer.email')
-                                input(type="text" name="customer_email")
-                            .material-input
-                                label(for="customer_address")= __('cart_page.customer.address')
-                                input(type="text" name="customer_address")
+                        form#purchase-form
+                            +material-input()(label=__('cart_page.customer.name'), type='text' name='customer_name' iid='customer_name-inp', required=true)
+                            +material-input()(label=__('cart_page.customer.phone'), type='text' name='customer_phone' iid='customer_phone-inp', required=true)
+                            +material-input()(label=__('cart_page.customer.email'), type='text' name='customer_email' iid='customer_email-inp', required=true)
+                            +material-input()(label=__('cart_page.customer.address'), type='text' name='customer_address' iid='customer_address-inp', required=true)
                             .summary-container(data-total=0)
                                 p.summary-price
                                     span.label= __('cart_page.summary.label')
                                     span.total
                                         span.unit #{__('global.price_unit')}
                                         span.value 0
-                                button(type="submit" class="btn btn-block btn-purchase")= __('cart_page.summary.purchase')
-
-
+                            button(type="button" class="btn btn-block btn-purchase")= __('cart_page.summary.purchase')

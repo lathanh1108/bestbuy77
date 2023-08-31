@@ -1,0 +1,158 @@
+.payment-page {
+	display: flex;
+	min-height: 100vh;
+
+	.main-img {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex: 1 0 32%;
+		max-width: 32%;
+
+		@include media-breakpoint-down(md) {
+			display: none;
+		}
+
+		.logo {
+			width: 192px;
+			height: 62px;
+			margin-bottom: 52px;
+		}
+
+		img {
+			width: 300px;
+		}
+	}
+
+	.content {
+		flex: 1 0;
+		background-color: #f3f7fe;
+		border: 1px solid #e3f0fe;
+		border-radius: 30px 0 0 30px;
+		display: flex;
+		gap: 30px;
+		padding: 170px 12px 170px 50px;
+
+		> * {
+			background-color: $white;
+			border-radius: 12px;
+			padding: 28px 20px;
+			width: 100%;
+			max-width: 370px;
+		}
+
+		h3 {
+			@include setFontSize(20);
+
+			text-transform: uppercase;
+			padding-bottom: 20px;
+			color: $dark;
+		}
+
+		.payment-details {
+            display: flex;
+            flex-direction: column;
+
+			h3 {
+				padding-bottom: 0;
+			}
+
+			.detail-item {
+				padding: 20px 0;
+
+				&:first-child {
+					padding-top: 0;
+				}
+
+				&:not(:last-child) {
+					border-bottom: 1px solid rgba($gray, 0.25);
+				}
+
+                &.order-number {
+                    .value {
+                        text-transform: uppercase;
+                    }
+                }
+
+                &.total {
+                    flex: 1 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    padding-bottom: 0;
+
+                    .value {
+                        @include setFontSize(18);
+                        
+                        color: $green;
+                        text-align: right;
+                    }
+                }
+
+				.label {
+					@include setFontSize(18);
+
+					color: $gray-dark;
+					text-transform: uppercase;
+					margin-bottom: 4px;
+				}
+
+				.value {
+					@include setFontSize(14);
+
+					color: $gray;
+				}
+			}
+		}
+
+		.payment-options {
+            position: relative;
+
+			.payment-option-list {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+			}
+
+			.option-item {
+				display: flex;
+                align-items: center;
+				border: 1px solid rgb(227, 234, 246);
+				border-radius: 8px;
+                gap: 10px;
+                min-height: 52px;
+                cursor: pointer;
+                padding: 5px;
+
+                &:hover {
+                    border: 1px solid rgb(75, 150, 210);
+                    box-shadow: rgba(214, 225, 255, 0.25) 0px 4px 4px;
+                }
+
+				.option-icon {
+                    img {
+                        $size: 40px;
+    
+                        width: $size;
+                        height: $size;
+                        cursor: pointer;
+                    }
+				}
+
+				.option-name {
+					flex: 1 0;
+                    cursor: pointer;
+                    text-transform: uppercase;
+				}
+			}
+
+            .btn-payment-back {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                transform: translateY(calc(100% + 20px));
+            }
+		}
+	}
+}

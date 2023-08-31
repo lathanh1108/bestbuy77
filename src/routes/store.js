@@ -61,7 +61,9 @@ router.get('/checkout', function (req, res, next) {
 	let productIdList = req.cookies.cart;
 
 	// convert cookie string to array
-	productIdList = productIdList.split(',');
+	if (productIdList != undefined && productIdList != null) {
+		productIdList = productIdList.split(',');		
+	}
 
 	getProductsById(productIdList, req.cookies.lang).then(response => {
 		res.render('pages/cart', {

@@ -1,4 +1,9 @@
-const { src, dest, watch, series } = require('gulp')
+const { src, dest, watch, series } = require('gulp');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const uglify = require('gulp-uglify');
+const merge = require('merge-stream');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
@@ -6,31 +11,56 @@ const sass = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat');
 const clean = require('gulp-clean');
 
+
+require('dotenv').config();
+
+const srcPath = 'src/assets';
+const publicPath = 'public';
+
 const filesPath = {
-    scss: 'src/assets/scss/*.scss',
-    fonts: 'src/assets/fonts/**',
-    images: 'src/assets/images/**',
-    js: 'src/assets/js/*.js',
-    jsLibraries: 'src/assets/js/libraries/*',
-    cssLibraries: 'src/assets/scss/libraries/*',
+    css: `${srcPath}/scss`,
+    js: `${srcPath}/js`,
 };
+
+const librariesPath = {
+    js: `${srcPath}/js/libraries/*`,
+    css: `${srcPath}/scss/libraries/*`,
+}
+
+const assetsPath = {
+    fonts: `${srcPath}/fonts/*`,
+    images: `${srcPath}/images/*`
+}
 
 const filesPathTarget = {
-    scss: 'public/css',
-    fonts: 'public/fonts',
-    images: 'public/images',
-    js: 'public/js',
+    css: `${publicPath}/css`,
+    js: `${publicPath}/js`,
+    fonts: `${publicPath}/fonts`,
+    images: `${publicPath}/images`,
 };
 
-const filesPathWatch = {
-    scss: 'src/assets/scss/**/*.scss',
-    js: 'src/assets/js/**/*.js',
-};
+function js() {
+    var b = browserify({
+        entries: `${filesPath.js}/app.js`,
+        debug: false
+    });
 
-function scssTask(mode = null) {
+    var javascript = b.bundle()
+        .pipe(source('app.js'))
+        .pipe(buffer())
+        // .pipe(uglify())
+        .pipe(dest(filesPathTarget.js));
+
+    var libraries = src(librariesPath.js)
+        .pipe(dest(filesPathTarget.js));
+
+    return merge(javascript, libraries);
+}
+
+function css() {
     var processors = null;
 
-    if (mode == 'prod') {
+    if (process.env.NODE_ENV == 'production') {
         processors = [
             autoprefixer,
             cssnano
@@ -41,69 +71,43 @@ function scssTask(mode = null) {
         ];
     }
 
-    return src(filesPath.scss)
+    var scss = src(`${filesPath.css}/index.scss`)
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss(processors))
         .pipe(concat('style.css'))
-        .pipe(dest(filesPathTarget.scss));
+        .pipe(dest(filesPathTarget.css));
+
+    var libraries = src(librariesPath.css)
+        .pipe(dest(filesPathTarget.css));
+
+    return merge(scss, libraries)
 }
 
-function jsTask() {
-    return src([filesPath.js])
-        .pipe(concat('app.js'))
-        .pipe(dest(filesPathTarget.js));
-}
-
-function fontTask() {
-    return src(filesPath.fonts)
+function asset() {
+    var fonts = src(assetsPath.fonts)
         .pipe(dest(filesPathTarget.fonts));
-}
 
-function imageTask() {
-    return src(filesPath.images)
+    var images = src(assetsPath.images)
         .pipe(dest(filesPathTarget.images));
-}
 
-function copyJsLibraries() {
-    return src(filesPath.jsLibraries)
-        .pipe(dest(filesPathTarget.js));
-}
-
-function copyCssLibraries() {
-    return src(filesPath.cssLibraries)
-        .pipe(dest(filesPathTarget.scss));
-}
-
-function copyAssets() {
-    copyJsLibraries();
-    copyCssLibraries();
-    fontTask();
-    imageTask();
+    return merge(fonts, images);
 }
 
 function defaultClean() {
-    return src('public').pipe(clean());
+    return src(publicPath, { allowEmpty: true }).pipe(clean());
 }
 
 function build(cb) {
-    scssTask();
-    jsTask();
-    copyAssets();
+    js();
+    css();
+    asset();
     cb();
 }
 
 function serve() {
-    watch(filesPathWatch.scss, scssTask);
-    watch(filesPathWatch.js, jsTask);
-}
-
-function production(cb) {
-    scssTask('production');
-    jsTask();
-    copyAssets();
-    cb();
+    watch(`${filesPath.css}/**`, css);
+    watch(`${filesPath.js}/**`, js);
 }
 
 exports.default = series(defaultClean, build);
-exports.production = series(defaultClean, production)
 exports.serve = series(defaultClean, build, serve);

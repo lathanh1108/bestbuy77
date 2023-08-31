@@ -55,5 +55,15 @@
 	"cart_page.customer.email": "อีเมล:",
 	"cart_page.customer.address": "ที่อยู่:",
 	"cart_page.summary.label": "จำนวนเงินทั้งหมด:",
-	"cart_page.summary.purchase": "ซื้อ"
+	"cart_page.summary.purchase": "ซื้อ",
+	"title_page.payment": "Bestbuy77 - แพลตฟอร์มอีคอมเมิร์ซที่รวดเร็ว สะดวก และปลอดภัย",
+	"payment.your_order": "คำสั่งของคุณ",
+	"payment.order_code": "รหัสสั่งซื้อ",
+	"payment.order_tracking.title": "การติดตามคำสั่งซื้อ",
+	"payment.order_tracking.value": "ลูกค้าสามารถติดตามสถานะการสั่งซื้อได้ทางอีเมล์",
+	"payment.order_total": "ราคาสั่งซื้อทั้งหมด",
+	"payment.payment_options.tile": "เลือกวิธีการชำระเงิน",
+	"payment.appota": "แอพโพตา",
+	"payment.9pay": "9 จ่าย",
+	"go_back": "กลับ"
 }

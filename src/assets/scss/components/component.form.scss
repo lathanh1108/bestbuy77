@@ -129,11 +129,17 @@ a.btn-block {
 	display: flex;
 	align-items: baseline;
 	justify-content: space-between;
+	flex-wrap: wrap;
 	margin-bottom: 12px;
 
-	label {
-		min-width: 110px;
+	.inp-label {
+		flex: 1 0 110px;
+		max-width: 110px;
 		color: $gray;
+	}
+
+	.inp-field {
+		flex: 1 0;
 	}
 
 	input {
@@ -143,5 +149,15 @@ a.btn-block {
 		&:focus-visible {
 			outline: none;
 		}
+	}
+
+	label.error {
+		@include setFontSize(12);
+
+		color: $orange;
+		display: block;
+		font-style: italic;
+		text-align: right;
+		width: 100%;
 	}
 }

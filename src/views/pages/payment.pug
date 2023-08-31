@@ -1,0 +1,34 @@
+extends ../layouts/layout-blank
+
+block meta
+    title #{__('title_page.payment')}
+
+block content
+    .payment-page 
+        .main-img
+            img(src="/images/logo.svg" alt="alt" class="logo")
+            img(src="/images/payment-img.png" alt="alt" class="img")
+        .content
+            .payment-details
+                h3=__('payment.your_order')
+                .detail-item.order-number
+                    p.label=__('payment.order_code')
+                    p.value=order.id 
+                .detail-item
+                    p.label=__('payment.order_tracking.title')
+                    p.value=__('payment.order_tracking.value')
+                .detail-item.total
+                    p.label=__('payment.order_total')
+                    p.value #{__('global.price_unit')} #{order.total}
+            .payment-options
+                h3=__('payment.payment_options.tile')
+                .payment-option-list
+                    .option-item
+                        span.option-icon
+                            img(src="/images/apay-icon.png", alt="alt")
+                        span.option-name=__('payment.appota')
+                    .option-item
+                        span.option-icon
+                            img(src="/images/9pay-ico.svg", alt="alt")
+                        span.option-name=__('payment.9pay')
+                a(href="/").btn.btn-payment-back=__('go_back')

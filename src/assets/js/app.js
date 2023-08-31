@@ -1,38 +1,6 @@
 'use strict';
 
-/**
- * Helper
- */
-function setCookie(name, value, days) {
-    var expires = "";
-
-    if (days) {
-        var date = new Date();
-
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-
-        expires = "; expires=" + date.toUTCString();
-    }
-
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-
-    return null;
-}
-/**
- * End Helper
- */
+const Helper = require('./utils/helper');
 
 // Header scroll
 function fixedHeader() {
@@ -72,12 +40,12 @@ function initCategoriesAutocomplete() {
 
 // Categories Autocomplete
 function createCategoriesAutocomplete(source) {
-    const categorieContainer = $('.sub-header .categories');
+    const categoriesContainer = $('.sub-header .categories');
     const categoriesSelect = $("#categories-autocomplete");
-    let selectLabel = categorieContainer.find('.category-select .selected-value');
+    let selectLabel = categoriesContainer.find('.category-select .selected-value');
 
     if (categoriesSelect.length > 0) {
-        categorieContainer.find(':input').autocomplete({
+        categoriesContainer.find(':input').autocomplete({
             source: source,
             minLength: 0,
             classes: {
@@ -97,12 +65,12 @@ function createCategoriesAutocomplete(source) {
 
 // Add to cart
 function addToCart(prodId) {
-    let cartCookie = getCookie('cart');
+    let cartCookie = Helper.getCookie('cart');
 
     prodId = Number(prodId);
 
     if (cartCookie == undefined || cartCookie == null && cartCookie.length <= 0) {
-        setCookie('cart', prodId, 7);
+        Helper.setCookie('cart', prodId, 7);
     } else {
         let cart = cartCookie.split(',');
         let isExits = false;
@@ -119,7 +87,30 @@ function addToCart(prodId) {
 
         cart = cart.toString();
 
-        setCookie('cart', cart, 7);
+        Helper.setCookie('cart', cart, 7);
+    }
+
+    updateCart();
+}
+
+function updateCart() {
+    let cartCookie = Helper.getCookie('cart');
+
+    if (cartCookie != undefined && cartCookie != null) {
+        let itemCount = cartCookie.split(',').length;
+
+        if (itemCount > 0) {
+            let subHeader = $('.sub-header');
+
+            if (subHeader.length > 0) {
+                let cartAmount = subHeader.find('.cart-link .amount');
+
+                if (cartAmount.length > 0) {
+                    cartAmount.text(itemCount);
+                    cartAmount.show();
+                }
+            }
+        }
     }
 }
 
@@ -209,6 +200,20 @@ function updateSummaryTotalPrice(ele) {
 
 }
 
+// Purchase event
+function purchase() {
+    const summary = $('.summary-price');
+
+    if (summary.length > 0) {
+        let summaryValueDOM = summary.find('.value');
+        let summaryValue = Number(summaryValueDOM.text());
+
+        if (summaryValue > 0) {
+            window.open(`/payment/${summaryValue}`, '_blank');
+        }
+    }
+}
+
 // Init Event
 function initEvent() {
     // Scroll event
@@ -244,11 +249,18 @@ function initEvent() {
     $('input:checkbox[name=check_product]').on('change', function (e) {
         updateSummaryTotalPrice(e.target)
     })
+
+    // Purchase function
+    $('.btn-purchase').on('click', function () {
+        purchase();
+    });
+
 }
 
 // Init Function
 function init() {
     initCategoriesAutocomplete();
+    updateCart();
     initPriceProductCart();
     initEvent();
 }
