@@ -65,5 +65,6 @@
 	"payment.payment_options.tile": "เลือกวิธีการชำระเงิน",
 	"payment.appota": "แอพโพตา",
 	"payment.9pay": "9 จ่าย",
-	"go_back": "กลับ"
+	"go_back": "กลับ",
+	"payment.gbpay": "GB pay"
 }

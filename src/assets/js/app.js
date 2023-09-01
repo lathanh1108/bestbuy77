@@ -65,50 +65,28 @@ function createCategoriesAutocomplete(source) {
 
 // Add to cart
 function addToCart(prodId) {
-    let cartCookie = Helper.getCookie('cart');
-
-    prodId = Number(prodId);
-
-    if (cartCookie == undefined || cartCookie == null && cartCookie.length <= 0) {
-        Helper.setCookie('cart', prodId, 7);
-    } else {
-        let cart = cartCookie.split(',');
-        let isExits = false;
-
-        cart = cart.map((item) => {
-            return Number(item);
-        })
-
-        isExits = cart.includes(prodId);
-
-        if (!isExits) {
-            cart.push(prodId);
-        }
-
-        cart = cart.toString();
-
-        Helper.setCookie('cart', cart, 7);
-    }
+    Helper.addProductToCartCookie(prodId);
 
     updateCart();
 }
 
+// Update cart badge
 function updateCart() {
-    let cartCookie = Helper.getCookie('cart');
+    let cartCookie = Helper.getCartCookie();
 
-    if (cartCookie != undefined && cartCookie != null) {
-        let itemCount = cartCookie.split(',').length;
+    if (cartCookie.length > 0) {
+        let subHeader = $('.sub-header');
+        let itemCount = cartCookie.length;
 
-        if (itemCount > 0) {
-            let subHeader = $('.sub-header');
+        if (subHeader.length > 0) {
+            let cartAmount = subHeader.find('.cart-link .amount');
 
-            if (subHeader.length > 0) {
-                let cartAmount = subHeader.find('.cart-link .amount');
-
-                if (cartAmount.length > 0) {
-                    cartAmount.text(itemCount);
-                    cartAmount.show();
-                }
+            if (cartAmount.length > 0) {
+                cartAmount.text(itemCount);
+                cartAmount.show();
+            } else {
+                cartAmount.text('');
+                cartAmount.hide();
             }
         }
     }
@@ -173,11 +151,21 @@ function initPriceProductCart() {
 
 // remove product on cart
 function removeProductOnCart(ele) {
+    var pid = $(ele.currentTarget).data('pid');
+    var $prod = $(ele.currentTarget).closest('.product-information');
+
+    if (pid != undefined && pid != null) {
+        Helper.removeProductInCartCookie(pid);
+
+        if ($prod.length > 0) {
+            $prod.remove();
+        }
+    }
 }
 
 // Update summary total price
 function updateSummaryTotalPrice(ele) {
-    let checkbox = $(ele),
+    let checkbox = $(ele.currentTarget),
         product = checkbox.closest('.product-information'),
         summary = $('.summary-container'),
         isChecked = checkbox.is(':checked');
@@ -241,19 +229,13 @@ function initEvent() {
     })
 
     // remove product cart
-    $('.btn-remove-product').on('click', function (e) {
-        removeProductOnCart(e);
-    })
+    $('.btn-remove-product').on('click', removeProductOnCart)
 
     // Update summary total price
-    $('input:checkbox[name=check_product]').on('change', function (e) {
-        updateSummaryTotalPrice(e.target)
-    })
+    $('input:checkbox[name=check_product]').on('change', updateSummaryTotalPrice)
 
     // Purchase function
-    $('.btn-purchase').on('click', function () {
-        purchase();
-    });
+    $('.btn-purchase').on('click', purchase);
 
 }
 

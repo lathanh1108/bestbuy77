@@ -65,5 +65,6 @@
 	"payment.payment_options.tile": "Select Payment Method",
 	"payment.appota": "appota",
 	"payment.9pay": "9pay",
-	"go_back": "Back"
+	"go_back": "Back",
+	"payment.gbpay": "GB pay"
 }

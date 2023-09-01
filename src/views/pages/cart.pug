@@ -42,8 +42,8 @@ block content
                                                     span.material-symbols-outlined add
                                         td(width="20%" class="product-total")
                                             span.unit #{__('global.price_unit')}
-                                        td(width="5%" class="btn-remove-product")
-                                            button(class="btn-remove-product")
+                                        td(width="5%")
+                                            button(class="btn-remove-product", data-pid=product.id)
                                                 span.material-symbols-outlined delete_forever
                 .shipping-info
                     .customer-info 

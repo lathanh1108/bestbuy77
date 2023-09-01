@@ -1,4 +1,4 @@
-function setCookie(name, value, days) {
+function setCookie(name, value, days = 7) {
     var expires = "";
 
     if (days) {
@@ -32,6 +32,49 @@ function getCurrentLang() {
     return lang ? lang : 'en';
 }
 
+function getCartCookie() {
+    var cart = getCookie('cart');
+    var result = [];
+
+    if (cart != undefined && cart != null) {
+        result = cart.split(',');
+    }
+
+    return result;
+}
+
+function setCartCookie(products = []) {
+    products = products.toString();
+
+    setCookie('cart', products, 7)
+}
+
+function addProductToCartCookie(pid = null) {
+    var cart = getCartCookie();
+    var isExists = cart.indexOf(pid);
+
+    if (pid != undefined && pid != null && isExists == -1) {
+        cart.push(pid);
+
+        setCartCookie(cart);
+    }
+}
+
+function removeProductInCartCookie(pid = null) {
+    var cart = getCartCookie();
+
+    if (pid != undefined && pid != null && cart.indexOf(pid.toString()) > -1) {
+        cart = cart.filter((value) => { return Number(value) != pid })
+
+        setCartCookie(cart);
+    }
+
+}
+
 exports.setCookie = setCookie;
 exports.getCookie = getCookie;
 exports.getCurrentLang = getCurrentLang;
+exports.getCartCookie = getCartCookie;
+exports.setCartCookie = setCartCookie;
+exports.addProductToCartCookie = addProductToCartCookie;
+exports.removeProductInCartCookie = removeProductInCartCookie;
