@@ -2,6 +2,10 @@
 	display: flex;
 	min-height: 100vh;
 
+	@include media-breakpoint-down(md) {
+		flex-direction: column;
+	}
+
 	.main-img {
 		display: flex;
 		flex-direction: column;
@@ -11,17 +15,27 @@
 		max-width: 32%;
 
 		@include media-breakpoint-down(md) {
-			display: none;
+			flex: 0 1 auto;
+			max-width: 100%;
+			padding: 24px 12px;
 		}
 
 		.logo {
 			width: 192px;
 			height: 62px;
 			margin-bottom: 52px;
+
+			@include media-breakpoint-down(md) {
+				margin-bottom: 0;
+			}
 		}
 
-		img {
+		.img {
 			width: 300px;
+
+			@include media-breakpoint-down(md) {
+				display: none;
+			}
 		}
 	}
 
@@ -33,6 +47,16 @@
 		display: flex;
 		gap: 30px;
 		padding: 170px 12px 170px 50px;
+
+		@include media-breakpoint-down(md) {
+			flex: 0 1;
+			border-radius: 30px;
+			padding: 25px;
+		}
+
+		@include media-breakpoint-down(sm) {
+			flex-wrap: wrap;
+		}
 
 		> * {
 			background-color: $white;
@@ -51,8 +75,8 @@
 		}
 
 		.payment-details {
-            display: flex;
-            flex-direction: column;
+			display: flex;
+			flex-direction: column;
 
 			h3 {
 				padding-bottom: 0;
@@ -69,26 +93,26 @@
 					border-bottom: 1px solid rgba($gray, 0.25);
 				}
 
-                &.order-number {
-                    .value {
-                        text-transform: uppercase;
-                    }
-                }
+				&.order-number {
+					.value {
+						text-transform: uppercase;
+					}
+				}
 
-                &.total {
-                    flex: 1 0;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-end;
-                    padding-bottom: 0;
+				&.total {
+					flex: 1 0;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+					padding-bottom: 0;
 
-                    .value {
-                        @include setFontSize(18);
-                        
-                        color: $green;
-                        text-align: right;
-                    }
-                }
+					.value {
+						@include setFontSize(18);
+
+						color: $green;
+						text-align: right;
+					}
+				}
 
 				.label {
 					@include setFontSize(18);
@@ -107,7 +131,7 @@
 		}
 
 		.payment-options {
-            position: relative;
+			position: relative;
 
 			.payment-option-list {
 				display: flex;
@@ -117,42 +141,46 @@
 
 			.option-item {
 				display: flex;
-                align-items: center;
+				align-items: center;
 				border: 1px solid rgb(227, 234, 246);
 				border-radius: 8px;
-                gap: 10px;
-                min-height: 52px;
-                cursor: pointer;
-                padding: 5px;
+				gap: 10px;
+				min-height: 52px;
+				cursor: pointer;
+				padding: 5px;
 
-                &:hover {
-                    border: 1px solid rgb(75, 150, 210);
-                    box-shadow: rgba(214, 225, 255, 0.25) 0px 4px 4px;
-                }
+				&:hover {
+					border: 1px solid rgb(75, 150, 210);
+					box-shadow: rgba(214, 225, 255, 0.25) 0px 4px 4px;
+				}
 
 				.option-icon {
-                    img {
-                        $size: 40px;
-    
-                        width: $size;
-                        height: $size;
-                        cursor: pointer;
-                    }
+					img {
+						$size: 40px;
+
+						width: $size;
+						height: $size;
+						cursor: pointer;
+					}
 				}
 
 				.option-name {
 					flex: 1 0;
-                    cursor: pointer;
-                    text-transform: uppercase;
+					cursor: pointer;
+					text-transform: uppercase;
 				}
 			}
 
-            .btn-payment-back {
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                transform: translateY(calc(100% + 20px));
-            }
+			.btn-payment-back {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				transform: translateY(calc(100% + 20px));
+
+				@include media-breakpoint-down(md) {
+					transform: translateY(calc(100% + 50px));
+				}
+			}
 		}
 	}
 }

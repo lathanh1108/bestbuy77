@@ -1,11 +1,11 @@
 .cart-page {
 	.cart-container {
 		display: flex;
-		margin: 0 -15px;
+		gap: 30px;
 
-		.cart-wrapper,
-		.shipping-info {
-			padding: 0 15px;
+		@include media-breakpoint-down(md) {
+			flex-wrap: wrap;
+			gap: 25px;
 		}
 
 		.cart-wrapper {
@@ -13,6 +13,12 @@
 
 			flex: 1 0 $width;
 			max-width: $width;
+
+			@include media-breakpoint-down(md) {
+				flex: 1 0 100%;
+				max-width: 100%;
+				overflow-x: auto;
+			}
 		}
 
 		.shipping-info {
@@ -20,14 +26,26 @@
 
 			flex: 1 0 $width;
 			max-width: $width;
+
+			@include media-breakpoint-down(md) {
+				flex: 1 0 100%;
+				max-width: 100%;
+			}
 		}
 	}
 
 	.table-wrapper-head,
 	.table-wrapper-body,
-    .customer-info {
+	.customer-info {
 		background-color: $white;
 		border-radius: 4px;
+	}
+
+	.table-wrapper-head,
+	.table-wrapper-body {
+		@include media-breakpoint-down(md) {
+			min-width: 700px;
+		}
 	}
 
 	table {
@@ -113,39 +131,39 @@
 			}
 		}
 
-        .product-total {
-            color: $orange;
-        }
+		.product-total {
+			color: $orange;
+		}
 	}
 
-    .customer-info {
-        padding: 24px;
+	.customer-info {
+		padding: 24px;
 
-        .customer-title {
-            @include roboto-medium;
-            @include setFontSize(20);
+		.customer-title {
+			@include roboto-medium;
+			@include setFontSize(20);
 
-            margin-bottom: 20px;
-        }
+			margin-bottom: 20px;
+		}
 
-        .summary-container {
-            border-top: 1px solid rgba($gray, 0.3);
-            margin-top: 36px;
-            padding-top: 24px;
-        }
+		.summary-container {
+			border-top: 1px solid rgba($gray, 0.3);
+			margin-top: 36px;
+			padding-top: 24px;
+		}
 
-        .summary-price {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
+		.summary-price {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 12px;
 
-            * {
-                @include roboto-medium;
-            }
+			* {
+				@include roboto-medium;
+			}
 
-            .total {
-                color: $orange;
-            }
-        }
-    }
+			.total {
+				color: $orange;
+			}
+		}
+	}
 }

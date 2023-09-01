@@ -21,8 +21,10 @@ header {
 		padding: 20px 40px;
 
 		.locales {
-			opacity: 0;
-			visibility: hidden;
+			@include media-breakpoint-up(md) {
+				opacity: 0;
+				visibility: hidden;
+			}
 		}
 
 		@include media-breakpoint-down(md) {
@@ -40,31 +42,6 @@ header {
 		align-items: center;
 	}
 
-	.locales {
-		display: flex;
-		position: absolute;
-		top: 0;
-		right: 0;
-		transform: translateY(-25px);
-		transition: all 0.15s ease-in-out;
-
-		li {
-			margin-left: 5px;
-
-			img {
-				height: 20px;
-			}
-		}
-	}
-
-	.header-menu {
-		flex: 1 0;
-
-		@include media-breakpoint-down(sm) {
-			display: none;
-		}
-	}
-
 	.site-logo {
 		img {
 			width: 224px;
@@ -77,14 +54,83 @@ header {
 		}
 	}
 
+	.header-menu {
+		flex: 1 0;
+
+		@include media-breakpoint-down(sm) {
+			background-color: $white;
+			display: flex;
+			flex-direction: column;
+			width: 70%;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			right: 0;
+			padding-top: 50px;
+			transition: 0.3s ease-in-out all;
+			transform: translateX(100%);
+		}
+	}
+
+	.locales {
+		display: flex;
+		position: absolute;
+		top: 0;
+		right: 0;
+		transform: translateY(-25px);
+		transition: all 0.15s ease-in-out;
+
+		@include media-breakpoint-down(sm) {
+			display: flex;
+			justify-content: center;
+			position: relative;
+			transform: none;
+			margin-top: 30px;
+		}
+
+		li {
+			margin-left: 5px;
+
+			@include media-breakpoint-down(sm) {
+				margin: 0;
+				padding: 0 10px;
+			}
+
+			img {
+				height: 20px;
+
+				@include media-breakpoint-down(sm) {
+					height: 30px;
+				}
+			}
+		}
+	}
+
 	.menu {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+
+		@include media-breakpoint-down(sm) {
+			flex-direction: column;
+		}
 	}
 
 	.menu-item {
-		margin-left: 40px;
+		@include media-breakpoint-up(md) {
+			margin-left: 40px;
+		}
+
+		@include media-breakpoint-down(sm) {
+			width: 100%;
+			padding: 10px 20px;
+		}
+
+		&.login {
+			@include media-breakpoint-down(sm) {
+				padding: 30px 60px 0;
+			}
+		}
 	}
 
 	.menu-link {
@@ -93,6 +139,11 @@ header {
 		align-items: center;
 		min-height: 40px;
 		position: relative;
+
+		@include media-breakpoint-down(sm) {
+			width: 100%;
+			justify-content: center;
+		}
 
 		&.active,
 		&:hover {
@@ -116,6 +167,11 @@ header {
 		}
 	}
 
+	.btn-login {
+		@include media-breakpoint-down(sm) {
+		}
+	}
+
 	.btn-open-menu {
 		display: none;
 
@@ -123,10 +179,64 @@ header {
 			display: block;
 		}
 
-		svg {
+		.material-symbols-outlined {
 			@include setFontSize(16);
 
 			height: 20px;
+		}
+	}
+
+	.btn-close-menu {
+		$size: 40px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: $size;
+		height: $size;
+		position: absolute;
+		top: 0;
+		right: 0;
+
+		@include media-breakpoint-up(md) {
+			display: none;
+		}
+	}
+}
+
+.overlay {
+	opacity: 0;
+	visibility: hidden;
+}
+
+html.mobile-menu-open {
+	height: 100%;
+	overflow: hidden;
+
+	header {
+		.header-menu {
+			transform: translateX(0);
+			z-index: 12;
+		}
+	}
+
+	.overlay {
+		background-color: rgba($black, 0.2);
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		left: 0;
+		opacity: 1;
+		visibility: visible;
+		z-index: 11;
+	}
+}
+
+html.loading {
+	.header-menu {
+		@include media-breakpoint-down(sm) {
+			display: none;
 		}
 	}
 }

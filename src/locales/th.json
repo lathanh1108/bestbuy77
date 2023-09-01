@@ -78,5 +78,5 @@
 	"login.field_psw": "รหัสผ่าน",
 	"login.button_login": "เข้าสู่ระบบ",
 	"login.error": "ไม่สามารถเข้าสู่ระบบได้เนื่องจากอีเมลหรือรหัสผ่านผิด",
-	"page_under_development": "เพจอยู่ระหว่างการพัฒนา"
+	"page_under_development": "หน้านี้อยู่ระหว่างการพัฒนา"
 }

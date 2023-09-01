@@ -43,11 +43,13 @@ main {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 30px;
 	
 	h1 {
 		@include roboto-medium;
 		@include setFontSize(30);
 
 		color: $gray;
+		text-align: center;
 	}
 }

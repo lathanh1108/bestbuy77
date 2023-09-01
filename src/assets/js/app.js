@@ -212,7 +212,7 @@ function initImageThumb() {
             pagination: false,
             arrows: false,
         });
-    
+
         var thumbnails = new Splide('#thumbnail-carousel', {
             fixedWidth: 100,
             fixedHeight: 60,
@@ -221,7 +221,7 @@ function initImageThumb() {
             pagination: false,
             isNavigation: true,
         });
-    
+
         main.sync(thumbnails);
         main.mount();
         thumbnails.mount();
@@ -234,6 +234,18 @@ function login() {
     if ($login.length > 0) {
         $login.find('.error').show();
     }
+}
+
+// Open menu mobile
+function openMenu() {
+    $('.header').append('<div class="overlay"></div>');
+    $('html').addClass('mobile-menu-open');
+}
+
+// Close menu mobile
+function closeMenu() {
+    $('html').removeClass('mobile-menu-open');
+    $('.header .overlay').remove();
 }
 
 // Init Event
@@ -279,7 +291,11 @@ function initEvent() {
     // Purchase function
     $('.btn-purchase').on('click', purchase);
 
-    $('.btn-login').on('click', login)
+    $('.btn-login').on('click', login);
+
+    $('.btn-open-menu').on('click', openMenu);
+
+    $('.btn-close-menu, .overlay').on('click', closeMenu);
 }
 
 // Init Function
@@ -293,4 +309,6 @@ function init() {
 
 $(window).on('load', function () {
     init();
+
+    $('html').removeClass('loading');
 });

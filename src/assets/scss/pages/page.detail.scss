@@ -12,6 +12,10 @@
 		background-color: $white;
 		border-radius: 8px;
 		padding: 40px 58px;
+
+		@include media-breakpoint-down(sm) {
+			padding: 25px 15px;
+		}
 	}
 
 	.prod-information {
@@ -19,13 +23,34 @@
 		gap: 45px;
 		margin-bottom: 30px;
 
+		@include media-breakpoint-down(md) {
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		@include media-breakpoint-down(sm) {
+			gap: 20px;
+		}
+
 		.prod-images-slide {
 			flex: 1 0;
 			max-width: 400px;
+
+			@include media-breakpoint-down(sm) {
+				max-width: 100%;
+			}
+		}
+
+		#main-carousel {
+			margin-bottom: 10px;
 		}
 
 		.prod-info {
 			flex: 1 0;
+
+			@include media-breakpoint-down(sm) {
+				flex: 1 0 100%;
+			}
 
 			.prod-category {
 				color: $gray;
@@ -50,12 +75,21 @@
 				align-items: center;
 				gap: 20px;
 				margin-top: 26px;
+
+				@include media-breakpoint-down(sm) {
+					margin-top: 15px;
+				}
 			}
 
 			.prod-action {
 				margin-top: 32px;
 				display: flex;
 				gap: 32px;
+
+				@include media-breakpoint-down(sm) {
+					flex-wrap: wrap;
+					gap: 15px;
+				}
 			}
 		}
 	}

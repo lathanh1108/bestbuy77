@@ -78,5 +78,5 @@
 	"login.field_psw": "Password",
 	"login.button_login": "Login",
 	"login.error": "Can't login due to wrong email or password",
-	"page_under_development": "The page is under development"
+	"page_under_development": "This page is under development"
 }
