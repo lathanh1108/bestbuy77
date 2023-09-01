@@ -36,7 +36,7 @@ function getCartCookie() {
     var cart = getCookie('cart');
     var result = [];
 
-    if (cart != undefined && cart != null) {
+    if (cart != undefined && cart != null && cart.length > 0) {
         result = cart.split(',');
     }
 

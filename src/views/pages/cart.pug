@@ -28,7 +28,7 @@ block content
                                                 label.custom-checkbox
                                                     input(type="checkbox" data-id=product.id name="check_product")
                                                 img(src=product.thumbnail alt=product.title class="product-image")
-                                                a(href="/store/detail" + product.id class="product-name") #{product.title}
+                                                a(href="/store/detail/" + product.id class="product-name") #{product.title}
                                         td(width="20%" class="product-price" data-price=product.price)
                                             span.unit #{__('global.price_unit')}
                                             span.value #{product.price}

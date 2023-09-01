@@ -47,6 +47,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/detail/:prodId', function (req, res, next) {
+	res.render('pages/detail');
 });
 
 router.get('/categories', function (req, res, next) {
@@ -59,10 +60,11 @@ router.get('/categories', function (req, res, next) {
 
 router.get('/checkout', function (req, res, next) {
 	let productIdList = req.cookies.cart;
+	let products = []
 
 	// convert cookie string to array
-	if (productIdList != undefined && productIdList != null) {
-		productIdList = productIdList.split(',');		
+	if (productIdList != undefined && productIdList != null && productIdList.length > 0) {
+		products = productIdList.split(',');		
 	}
 
 	getProductsById(productIdList, req.cookies.lang).then(response => {
