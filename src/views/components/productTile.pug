@@ -1,6 +1,6 @@
 .product-tile(data-prodid=product.id)
     .content
-        .image
+        a(href="/store/detail/" + product.id).image
             img(src=product.thumbnail, alt="product.title")
         .name
             a(href="/store/detail/" + product.id) #{product.title}
