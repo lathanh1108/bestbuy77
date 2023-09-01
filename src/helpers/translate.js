@@ -1,5 +1,4 @@
 const { TranslationServiceClient } = require('@google-cloud/translate');
-const cookieParser = require('cookie-parser');
 
 // Instantiates a client
 const translationClient = new TranslationServiceClient();
@@ -7,7 +6,9 @@ const translationClient = new TranslationServiceClient();
 const projectId = 'bestbuy77';
 const location = 'global';
 
-async function translateText(string, lang = 'en') {
+async function translateText(string) {
+    let lang = global.lang;
+
     // Construct request
     const request = {
         parent: `projects/${projectId}/locations/${location}`,
@@ -25,7 +26,9 @@ async function translateText(string, lang = 'en') {
     }
 }
 
-async function translateProduct(product, lang = 'en') {
+async function translateProduct(product) {
+    let lang = global.lang;
+
     if (lang && lang != 'en') {
         let transTitle = await translateText(product.title, lang).then(res => { return res; })
         let transDescription = await translateText(product.description, lang).then(res => { return res; })
@@ -37,10 +40,12 @@ async function translateProduct(product, lang = 'en') {
     return product;
 }
 
-async function translateProducts(products, lang = 'en') {
+async function translateProducts(products) {
+    let lang = global.lang;
+
     if (lang && lang != 'en') {
         for (let i = 0; i < products.length; i++) {
-            let transProduct = await translateProduct(products[i], lang).then(res => {return res});
+            let transProduct = await translateProduct(products[i], lang).then(res => { return res });
 
             products[i] = transProduct;
         }

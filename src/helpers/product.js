@@ -3,23 +3,53 @@ const { translateProduct } = require('./translate');
 
 const SINGLE_PRODUCT_URL = 'https://dummyjson.com/products/';
 
-async function getProductsById(prodIdList, lang) {
+
+async function getProductsById(prodIdList) {
     let products = [];
 
     if (prodIdList != undefined && prodIdList != null && prodIdList.length > 0) {
         for (let i = 0; i < prodIdList.length; i++) {
             const prodId = prodIdList[i];
-            let url = SINGLE_PRODUCT_URL + prodId;
 
-            await axios.get(url).then(response => {
-                translateProduct(response.data, lang).then(res => {
-                    products.push(res);
-                })
-            });
+            await getProductById(prodId).then(response => {
+                products.push(response);
+
+                return;
+            })
         }
     }
 
     return products;
 }
 
+async function getProductById(pid) {
+    if (pid != null) {
+        let url = SINGLE_PRODUCT_URL + pid;
+
+        let product = await axios.get(url).then(async response => {
+            let product = await translateProduct(response.data).then(res => {
+                return res;
+            })
+
+            return product;
+        });
+
+        return product;
+    }
+}
+
+async function productDetail(req, res, next) {
+    let pid = req.params.pid;
+
+    if (pid != null) {
+        let product = await getProductById(pid).then(response => { return response });
+
+        await res.render('pages/detail', {
+            product
+        })
+    }
+}
+
 exports.getProductsById = getProductsById;
+exports.getProductById = getProductById;
+exports.productDetail = productDetail;

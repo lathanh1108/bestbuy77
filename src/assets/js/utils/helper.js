@@ -49,7 +49,7 @@ function setCartCookie(products = []) {
     setCookie('cart', products, 7)
 }
 
-function addProductToCartCookie(pid = null) {
+function addProductToCartCookie(pid = '') {
     var cart = getCartCookie();
     var isExists = cart.indexOf(pid.toString());
 

@@ -1,0 +1,19 @@
+extends ../layouts/layout
+
+block meta
+    title #{__('title_page.homepage')}
+
+block content
+    main.login-page
+        .login-content
+            h2=__('login.welcome')
+            form
+                label.default-input #{__('login.field_email')}
+                    input(type="text" name="email")
+
+                label.default-input #{__('login.field_psw')}
+                    input(type="text" name="password")
+
+                span(style="display:none;").error=__('login.error')
+
+                button(type="button").btn.btn-login=__('login.button_login') 

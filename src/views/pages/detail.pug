@@ -8,3 +8,43 @@ block content
         .wrapper
             include ../components/subHeader
             .detail-page
+                h2.page-title=__('detail_page.title')
+                .prod-information
+                    .prod-images-slide
+                        div(class="splide" id="main-carousel")
+                            div(class="splide__track")
+                                ul(class="splide__list")
+                                    each image in product.images
+                                        li(class="splide__slide")
+                                            img(src=image, alt="alt")
+                        div(class="splide" id="thumbnail-carousel")
+                            div(class="splide__track")
+                                ul(class="splide__list")
+                                    each image in product.images
+                                        li(class="splide__slide")
+                                            img(src=image, alt="alt")
+                    .prod-info
+                        p.prod-category=product.category
+                        h1.prod-name=product.title
+                        .prod-rating
+                        p.prod-price=__('global.price_unit') + product.price
+                        .prod-quantity
+                            .quantity-label=__('detail_page.quantity')
+                            div(class="number-input")
+                                button(class="minus btn-change-quantity")
+                                    span.material-symbols-outlined remove
+                                .quantity-input
+                                    input(class="quantity" min="1" name="quantity" type="number" max="9799" value="1")
+                                button(class="plus btn-change-quantity")
+                                    span.material-symbols-outlined add
+                        .prod-action
+                            button(data-prodid=product.id).btn.btn-outline.btn-add-to-cart
+                                span.material-symbols-outlined add_shopping_cart
+                                span.btn-title #{__('detail_page.add_to_cart')}
+                            button(data-prodid=product.id).btn.btn-outline.btn-buy-now
+                                span.material-symbols-outlined arrow_right_alt
+                                span.btn-title #{__('detail_page.buy_now')}
+                .product-detail
+                    .detail-item
+                        h2=__('detail_page.product_detail')
+                        .detail !{product.description}

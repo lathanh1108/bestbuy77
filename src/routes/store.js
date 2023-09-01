@@ -2,7 +2,7 @@ var express = require('express');
 const axios = require("axios");
 var router = express.Router();
 const { translateProducts } = require('../helpers/translate');
-const { getProductsById } = require('../helpers/product');
+const { getProductsById, getProductById, productDetail } = require('../helpers/product');
 
 const SINGLE_PRODUCT_URL = 'https://dummyjson.com/products/';
 
@@ -46,9 +46,7 @@ router.get('/', function (req, res, next) {
 	})
 });
 
-router.get('/detail/:prodId', function (req, res, next) {
-	res.render('pages/detail');
-});
+router.get('/detail/:pid', productDetail);
 
 router.get('/categories', function (req, res, next) {
 	const categoriesUrl = 'https://dummyjson.com/products/categories';
@@ -64,10 +62,10 @@ router.get('/checkout', function (req, res, next) {
 
 	// convert cookie string to array
 	if (productIdList != undefined && productIdList != null && productIdList.length > 0) {
-		products = productIdList.split(',');		
+		products = productIdList.split(',');
 	}
 
-	getProductsById(products, req.cookies.lang).then(response => {
+	getProductsById(products).then(response => {
 		res.render('pages/cart', {
 			products: response
 		});

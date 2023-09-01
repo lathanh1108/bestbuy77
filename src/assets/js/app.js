@@ -202,6 +202,40 @@ function purchase() {
     }
 }
 
+function initImageThumb() {
+    var $main = $('#main-carousel');
+    var $thumb = $('#thumbnail-carousel');
+    if ($main.length > 0 && $thumb.length > 0) {
+        var main = new Splide('#main-carousel', {
+            type: 'fade',
+            rewind: true,
+            pagination: false,
+            arrows: false,
+        });
+    
+        var thumbnails = new Splide('#thumbnail-carousel', {
+            fixedWidth: 100,
+            fixedHeight: 60,
+            gap: 10,
+            rewind: true,
+            pagination: false,
+            isNavigation: true,
+        });
+    
+        main.sync(thumbnails);
+        main.mount();
+        thumbnails.mount();
+    }
+}
+
+function login() {
+    var $login = $('.login-content');
+
+    if ($login.length > 0) {
+        $login.find('.error').show();
+    }
+}
+
 // Init Event
 function initEvent() {
     // Scroll event
@@ -214,9 +248,17 @@ function initEvent() {
 
     // Add to cart click event
     $('.btn-add-to-cart').on('click', function (e) {
-        let prodId = $(e.target).data('prodid');
+        let prodId = $(e.currentTarget).data('prodid');
 
         addToCart(prodId);
+    })
+
+    $('.btn-buy-now').on('click', function (e) {
+        let prodId = $(e.currentTarget).data('prodid');
+
+        addToCart(prodId);
+
+        window.location.href = '/store/checkout'
     })
 
     // Change quantity event
@@ -237,6 +279,7 @@ function initEvent() {
     // Purchase function
     $('.btn-purchase').on('click', purchase);
 
+    $('.btn-login').on('click', login)
 }
 
 // Init Function
@@ -244,6 +287,7 @@ function init() {
     initCategoriesAutocomplete();
     updateCart();
     initPriceProductCart();
+    initImageThumb();
     initEvent();
 }
 

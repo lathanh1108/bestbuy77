@@ -1,0 +1,35 @@
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    .login-content {
+        background-color: $white;
+        border: 1px solid $gray-light;
+        border-radius: 8px;
+        padding: 40px;
+        min-width: 40%;
+        max-width: 740px;
+    }
+
+    h2 {
+        @include roboto-medium;
+        @include setFontSize(28);
+
+        color: $dark;
+        margin: 23px 0;
+        text-align: center;
+    }
+
+    .error {
+        @include setFontSize(12);
+
+        color: $orange;
+        font-style: italic;
+    }
+
+    button {
+        margin: 24px auto 0;
+    }
+}

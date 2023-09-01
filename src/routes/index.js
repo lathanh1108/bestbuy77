@@ -28,4 +28,12 @@ router.get('/payment/:price', function (req, res, next) {
 	})
 })
 
+router.get('/auth', function (req, res, next) {
+	res.render('pages/login')
+})
+
+router.get('/user-manual', function (req, res, next) {
+	res.render('pages/under-development')
+})
+
 module.exports = router;

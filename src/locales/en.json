@@ -67,5 +67,16 @@
 	"payment.9pay": "9pay",
 	"go_back": "Back",
 	"payment.gbpay": "GB pay",
-	"title_page.detail": "title_page.detail"
+	"title_page.detail": "Bestbuy77 - Fast, Convenient and Secure E-Commerce Platform",
+	"detail_page.title": "Product details",
+	"detail_page.add_to_cart": "Add to cart",
+	"detail_page.buy_now": "Buy now",
+	"detail_page.product_detail": "PRODUCT DETAILS",
+	"detail_page.quantity": "Quantity",
+	"login.welcome": "Welcome to Bestbuy77",
+	"login.field_email": "Email",
+	"login.field_psw": "Password",
+	"login.button_login": "Login",
+	"login.error": "Can't login due to wrong email or password",
+	"page_under_development": "The page is under development"
 }

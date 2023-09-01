@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const i18n = require('i18n');
+require('dotenv').config();
 
 var indexRouter = require('./src/routes/index');
 var storeRouter = require('./src/routes/store');
@@ -12,18 +13,34 @@ var app = express();
 
 app.use(cookieParser());
 
+global.lang = process.env.DEFAULT_LANG
+
+// app.use((req, res, next) => {
+//   if (req.cookies.lang == null || req.cookies.lang == '') {
+//     res.cookie('lang', process.env.DEFAULT_LANG, { maxAge: 900000 });
+//     res.locals.lang = process.env.DEFAULT_LANG;
+//   }
+//   next();
+// })
+
 // Multi language
+
+
 app.use(i18n.init);
 
 i18n.configure({
   locales: ['th', 'en'],
-  defaultLocale: 'th',
+  defaultLocale: process.env.DEFAULT_LANG,
+  fallbacks: process.env.DEFAULT_LANG,
+  retryInDefaultLocale: true,
   directory: __dirname + '/src/locales',
-  cookie: 'lang'
+  cookie: 'lang',
 });
 
 app.use('/change-lang/:lang', (req, res) => {
   res.cookie('lang', req.params.lang, { maxAge: 900000 });
+  global.lang = req.params.lang;
+  res.locals.lang = req.params.lang;
   res.redirect('back');
 });
 

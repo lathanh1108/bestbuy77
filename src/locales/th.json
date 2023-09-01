@@ -66,5 +66,17 @@
 	"payment.appota": "แอพโพตา",
 	"payment.9pay": "9 จ่าย",
 	"go_back": "กลับ",
-	"payment.gbpay": "GB pay"
+	"payment.gbpay": "GB pay",
+	"title_page.detail": "Bestbuy77 - แพลตฟอร์มอีคอมเมิร์ซที่รวดเร็ว สะดวก และปลอดภัย",
+	"detail_page.title": "รายละเอียดสินค้า",
+	"detail_page.add_to_cart": "เพิ่มลงในรถเข็น",
+	"detail_page.buy_now": "ซื้อตอนนี้",
+	"detail_page.product_detail": "Pรายละเอียดสินค้า",
+	"detail_page.quantity": "ปริมาณ",
+	"login.welcome": "ยินดีต้อนรับสู่ Bestbuy77",
+	"login.field_email": "อีเมล",
+	"login.field_psw": "รหัสผ่าน",
+	"login.button_login": "เข้าสู่ระบบ",
+	"login.error": "ไม่สามารถเข้าสู่ระบบได้เนื่องจากอีเมลหรือรหัสผ่านผิด",
+	"page_under_development": "เพจอยู่ระหว่างการพัฒนา"
 }
