@@ -67,7 +67,7 @@ router.get('/checkout', function (req, res, next) {
 		products = productIdList.split(',');		
 	}
 
-	getProductsById(productIdList, req.cookies.lang).then(response => {
+	getProductsById(products, req.cookies.lang).then(response => {
 		res.render('pages/cart', {
 			products: response
 		});

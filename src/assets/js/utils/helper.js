@@ -51,7 +51,7 @@ function setCartCookie(products = []) {
 
 function addProductToCartCookie(pid = null) {
     var cart = getCartCookie();
-    var isExists = cart.indexOf(pid);
+    var isExists = cart.indexOf(pid.toString());
 
     if (pid != undefined && pid != null && isExists == -1) {
         cart.push(pid);
