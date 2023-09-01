@@ -2,7 +2,7 @@ var express = require('express');
 const axios = require("axios");
 var router = express.Router();
 const { translateProducts } = require('../helpers/translate');
-const { getProductsById, getProductById, productDetail } = require('../helpers/product');
+const { getProductsById, formatCurrency, productDetail } = require('../helpers/product');
 
 const SINGLE_PRODUCT_URL = 'https://dummyjson.com/products/';
 
@@ -33,8 +33,13 @@ router.get('/', function (req, res, next) {
 		let prevPage = currentPage == 1 ? null : currentPage - 1;
 		let nextPage = currentPage == totalPage ? null : currentPage + 1;
 
+		translateProducts(products, req.cookies.lang).then(async productsTrans => {
+			for (let i = 0; i < productsTrans.length; i++) {
+				let product = productsTrans[i];
 
-		translateProducts(products, req.cookies.lang).then(productsTrans => {
+				product.price = await formatCurrency(product.price).then(price => { return price });
+			}
+
 			res.render('pages/store', {
 				products: productsTrans,
 				currentPage,

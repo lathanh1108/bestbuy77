@@ -31,6 +31,8 @@ async function getProductById(pid) {
                 return res;
             })
 
+            product.price = await formatCurrency(product.price).then(price => { return price });
+
             return product;
         });
 
@@ -50,6 +52,15 @@ async function productDetail(req, res, next) {
     }
 }
 
+async function formatCurrency(value) {
+    if (global.lang == 'th') {
+        return Number(value) * 35.11;
+    }
+
+    return value;
+}
+
 exports.getProductsById = getProductsById;
 exports.getProductById = getProductById;
 exports.productDetail = productDetail;
+exports.formatCurrency = formatCurrency;

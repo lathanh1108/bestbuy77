@@ -7,7 +7,7 @@ const projectId = 'bestbuy77';
 const location = 'global';
 
 async function translateText(string) {
-    let lang = global.lang;
+    let lang = global.lang ? global.lang : process.env.DEFAULT_LANG;
 
     // Construct request
     const request = {
@@ -27,7 +27,7 @@ async function translateText(string) {
 }
 
 async function translateProduct(product) {
-    let lang = global.lang;
+    let lang = global.lang ? global.lang : process.env.DEFAULT_LANG;
 
     if (lang && lang != 'en') {
         let transTitle = await translateText(product.title, lang).then(res => { return res; })
@@ -41,7 +41,7 @@ async function translateProduct(product) {
 }
 
 async function translateProducts(products) {
-    let lang = global.lang;
+    let lang = global.lang ? global.lang : process.env.DEFAULT_LANG;
 
     if (lang && lang != 'en') {
         for (let i = 0; i < products.length; i++) {

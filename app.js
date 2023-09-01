@@ -13,18 +13,15 @@ var app = express();
 
 app.use(cookieParser());
 
-global.lang = process.env.DEFAULT_LANG
-
-// app.use((req, res, next) => {
-//   if (req.cookies.lang == null || req.cookies.lang == '') {
-//     res.cookie('lang', process.env.DEFAULT_LANG, { maxAge: 900000 });
-//     res.locals.lang = process.env.DEFAULT_LANG;
-//   }
-//   next();
-// })
-
 // Multi language
-
+app.use((req, res, next) => {
+  if (req.cookies.lang != undefined && req.cookies.lang != null && req.cookies.lang != '') {
+    global.lang = req.cookies.lang;
+  } else {
+    global.lang = process.env.DEFAULT_LANG;
+  }
+  next();
+})
 
 app.use(i18n.init);
 
